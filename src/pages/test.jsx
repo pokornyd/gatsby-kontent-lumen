@@ -11,10 +11,10 @@ class TestRoute extends React.Component {
     const items = []
     const title = routeData.data.kontentItemSiteMetadata.elements.title.value
     const subtitle = routeData.data.kontentItemSiteMetadata.elements.subtitle.value
-    const test = routeData.data.allKontentItemTest.edges
-    console.log(test);
+    const test = routeData.data.allKontentItemTest.nodes
+    console.log(routeData.data.allKontentItemTest.nodes);
     test.forEach(test => {
-      items.push(<Testex data={test.node} key={test.node.elements.slug.value} />)
+      items.push(<Testex data={test} key={test.elements.slug.value} />)
     })
 
     return (
@@ -49,25 +49,22 @@ export const pageQuery = graphql`
       }
     }
     allKontentItemTest {
-      edges {
-        node {
-          id
-          elements {
-            content {
-              name
-              type
-              value
-            }
-            title {
-              name
-              type
-              value
-            }
-            slug {
-              name
-              value
-              type
-            }
+      nodes {
+        elements {
+          content {
+            name
+            type
+            value
+          }
+          slug {
+            name
+            type
+            value
+          }
+          title {
+            name
+            type
+            value
           }
         }
       }

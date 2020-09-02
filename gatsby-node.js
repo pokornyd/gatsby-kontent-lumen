@@ -75,6 +75,27 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
+      allKontentItemTest {
+        nodes {
+          elements {
+            content {
+              name
+              type
+              value
+            }
+            slug {
+              name
+              type
+              value
+            }
+            title {
+              name
+              type
+              value
+            }
+          }
+        }
+      }
     }
     `).then(result => {
       if (result.errors) {
